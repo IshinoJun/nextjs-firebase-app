@@ -1,3 +1,5 @@
+import Head from 'next/head'
+import React from 'react'
 import Layout from '../../../components/Layout'
 import { Answer } from '../../../models/Answer'
 import { Question } from '../../../models/Question'
@@ -8,8 +10,26 @@ type Props = {
 }
 
 export default function AnswersShow(props: Props) {
+  const getDescription = (answer: Answer) => {
+    const body = answer.body.trim().replace(/[ \r\n]/g, '')
+    if (body.length < 140) {
+      return body
+    }
+    return body.substring(0, 140) + '...'
+  }
+
+  const description = getDescription(props.answer)
+
   return (
     <Layout>
+      <Head>
+        <meta name="description" key="description" content={description} />
+        <meta
+          property="og:description"
+          key="ogDescription"
+          content={description}
+        />
+      </Head>
       <div className="row justify-content-center">
         <div className="col-12 col-md-6">
           <>
