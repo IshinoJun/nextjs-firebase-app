@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Layout from '../../../components/Layout'
+import TwitterShareButton from '../../../components/TwitterShareButton'
 import { Answer } from '../../../models/Answer'
 import { Question } from '../../../models/Question'
 
@@ -51,6 +52,12 @@ export default function AnswersShow(props: Props) {
             </section>
           </>
         </div>
+      </div>
+      <div className="my-3 d-flex justify-content-center">
+        <TwitterShareButton
+          url={`${process.env.NEXT_PUBLIC_WEB_URL}/answers/${props.answer.id}`}
+          text={props.answer.body}
+        />
       </div>
     </Layout>
   )
