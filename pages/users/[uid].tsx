@@ -1,8 +1,9 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import Layout from '../../components/Layout'
 import { User } from '../../models/User'
@@ -111,6 +112,11 @@ const UserShow: NextPage = () => {
                   )}
                 </div>
               </form>
+              <p>
+                <Link href="/users/me">
+                  <a className="btn btn-link">自分もみんなに質問してもらおう！</a>
+                </Link>
+              </p>
             </div>
           </div>
         </>
